@@ -8,6 +8,7 @@ use App\Models\Student as StudentModel;
 
 class Student extends Controller
 {
+  
     public function list(Request $request){
 
         $gets=$request->query();
@@ -19,4 +20,5 @@ class Student extends Controller
             'list',['list'=>$list,'gets'=>$gets]
         );
     }
+    
 }

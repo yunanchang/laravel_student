@@ -8,12 +8,17 @@
 </head>
 <body>
     <h1>學生列表</h1>
-   
-    <form action="./list" method="get" >
+    
+   {{$list}}
+  
+    <form action="./list" method="get">
     姓名:
-    <input type="text" name="key" >
+    <input type="text" name="key" value="{{ $gets['key']??''}}">
+    性別:
+    <input type="radio" name='sex' value="男" {{($gets['sex']??'')=='男'?'checked':''}}>男
+    <input type="radio" name='sex' value="女" {{($gets['sex']??'')=='女'?'checked':''}}>女
     <button>搜索</button>
-    {{-- {{$gets}} --}}
+   
    
     </form>
     <table border="1">

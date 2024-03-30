@@ -26,6 +26,9 @@ class Student extends Model
         if (isset($gets['key']) and $gets['key'] != '') {
             $obj->where('s.name','like',"%{$gets['key']}%");
         }
+        if(isset($gets['sex'])and $gets['sex']!=''){
+            $obj->where('s.sex',$gets['sex']);
+        }
 
         $list = $obj->get();
         return $list;

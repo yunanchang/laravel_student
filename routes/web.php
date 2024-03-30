@@ -21,3 +21,8 @@ Route::get('db',[Ding::class,'dbtest']);
 use App\Http\Controllers\Student;
  
 Route::get('list', [Student::class, 'list']);
+
+// ------------------------------
+Route::get('/list123', function () {
+    return view('list123');
+});
