@@ -65,7 +65,13 @@
        
     </tr>
     @endforelse
-
+{{-- 分頁 --}}
+<tr>
+    <td>
+        {{$list->withQueryString()->links()}}
+    </td>
+</tr>
+{{-- 分頁end --}}
     </table>
 </body>
 </html>

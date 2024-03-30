@@ -32,8 +32,9 @@ class Student extends Model
         if(isset($gets['mjs'])and $gets['mjs']!=''){
             $obj->whereIn('s.m_id',$gets['mjs']);
         }
-        $list = $obj->get();
-        
+        // $list = $obj->get();
+        // paginate(分頁筆數)
+        $list=$obj->paginate(10);
         return $list;
     }
     // 獲取器
