@@ -29,8 +29,11 @@ class Student extends Model
         if(isset($gets['sex'])and $gets['sex']!=''){
             $obj->where('s.sex',$gets['sex']);
         }
-
+        if(isset($gets['mjs'])and $gets['mjs']!=''){
+            $obj->whereIn('s.m_id',$gets['mjs']);
+        }
         $list = $obj->get();
+        
         return $list;
     }
     // 獲取器

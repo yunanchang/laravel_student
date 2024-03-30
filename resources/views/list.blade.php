@@ -9,7 +9,7 @@
 <body>
     <h1>學生列表</h1>
     
-   {{$list}}
+   {{-- {{$list}} --}}
   
     <form action="./list" method="get">
     姓名:
@@ -17,8 +17,19 @@
     性別:
     <input type="radio" name='sex' value="男" {{($gets['sex']??'')=='男'?'checked':''}}>男
     <input type="radio" name='sex' value="女" {{($gets['sex']??'')=='女'?'checked':''}}>女
+    <br>
+    {{-- 專業 --}}
+    {{-- {{$majors}} --}}
+    @foreach($majors as $v)
+    <input type="checkbox" name="mjs[]" value="{{$v['id']}}" {{in_array($v['id'],($gets['mjs'])??[])?'checked':''}}>{{$v['major']}}
+    @endforeach
+    {{-- {{$gets}} --}}
+    @php
+    echo '<br>$gets=';
+    print_r($gets);
+    @endphp
     <button>搜索</button>
-   
+
    
     </form>
     <table border="1">
@@ -26,7 +37,7 @@
         <th>學號</th>
         <th>姓名</th>
         <th>生日</th>
-        <th>性別˙</th>
+        <th>性別</th>
         <th>年齡</th>
         <th>專業</th>
         <th>操作</th>

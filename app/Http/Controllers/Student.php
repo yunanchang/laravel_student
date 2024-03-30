@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Major;
 use Illuminate\Http\Request;
 
 use App\Models\Student as StudentModel;
@@ -16,8 +17,11 @@ class Student extends Controller
 
         $list=StudentModel::list($gets);
         dump($list);
+        // 查詢全部專業
+        $majors=Major::get();
+        dump($majors);
         return view(
-            'list',['list'=>$list,'gets'=>$gets]
+            'list',['list'=>$list,'gets'=>$gets,'majors'=>$majors]
         );
     }
     
