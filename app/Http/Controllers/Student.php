@@ -36,4 +36,16 @@ class Student extends Controller
         //      return showMessage(['error'=>$rt['msg'],'time'=>5]);
         // }            
      }
+
+     public function add()
+     {
+         // 查詢專業
+         $majors=Major::get();
+         return view('add',['majors'=>$majors]);
+     }
+
+     public function save(Request $request){
+        $post=$request->post();
+        dump($post);
+     }
 }

@@ -28,3 +28,7 @@ Route::get('/list123', function () {
 });
 // -----------------------
 Route::get('del/{id}', [Student::class, 'del']);
+// 添加表單
+Route::get('add',[Student::class,'add']);
+// 添加處理
+Route::post('save',[Student::class,'save']);

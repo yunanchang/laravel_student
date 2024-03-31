@@ -58,8 +58,11 @@ class Student extends Model
         }catch(Exception $e){
             $arr=['error'=>1,'msg'=>'系統錯誤','eMsg'=>$e->getMessage()];
         }
-        return $arr;
-        // return redirect('public/list')->back()->with('massage',$arr);
-        // return redirect('./public/list.php')->with('message', $arr['msg']);
+        // return $arr;
+        // return redirect()->back()->with('message', $arr['msg']);
+        
+        return redirect('/list')->with('message', $arr['msg']);
     }
+
+   
 }

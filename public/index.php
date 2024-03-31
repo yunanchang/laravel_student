@@ -17,5 +17,5 @@ require __DIR__.'/../vendor/autoload.php';
     ->handleRequest(Request::capture());
 
     // -----include -common.php
-require_once __DIR__.'/../app/common.php'; 
+// require_once __DIR__.'/../app/common.php'; 
      // -----include -common.php

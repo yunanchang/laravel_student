@@ -32,6 +32,7 @@
 
    
     </form>
+   <a href="./add">添加</a>
     <table border="1">
     <tr>
         <th>學號</th>
@@ -57,7 +58,7 @@
         <td>{{$v['deleted_at']}}</td>
         <td>
             <a href="./del/{{$v['id']}}">刪除</a>
-            <a href="">修改</a>
+            <a href="./add">修改</a>
         </td>
        
     </tr>
