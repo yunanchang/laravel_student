@@ -26,3 +26,5 @@ Route::get('list', [Student::class, 'list']);
 Route::get('/list123', function () {
     return view('list123');
 });
+// -----------------------
+Route::get('del/{id}', [Student::class, 'del']);

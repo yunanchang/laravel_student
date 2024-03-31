@@ -40,6 +40,7 @@
         <th>性別</th>
         <th>年齡</th>
         <th>專業</th>
+        <th>del_at</th>
         <th>操作</th>
     </tr>
     @forelse ($list as $v)
@@ -53,8 +54,9 @@
         <td>{{$v['sex']}}</td>
         <td>{{$v['age']}}</td>
         <td>{{$v['major']}}</td>
+        <td>{{$v['deleted_at']}}</td>
         <td>
-            <a href="">刪除</a>
+            <a href="./del/{{$v['id']}}">刪除</a>
             <a href="">修改</a>
         </td>
        

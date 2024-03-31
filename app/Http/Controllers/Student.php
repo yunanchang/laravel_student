@@ -24,5 +24,16 @@ class Student extends Controller
             'list',['list'=>$list,'gets'=>$gets,'majors'=>$majors]
         );
     }
+
     
+    public static function del($id){
+        
+        $rt=StudentModel::del($id);
+        dump($rt);
+        // if($rt['error']==0){
+        //      return showMessage(['success'=>$rt['msg'],'url'=>'/list','time'=>5]);
+        // }else{
+        //      return showMessage(['error'=>$rt['msg'],'time'=>5]);
+        // }            
+     }
 }
