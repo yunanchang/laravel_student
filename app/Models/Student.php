@@ -13,7 +13,14 @@ class Student extends Model
     use SoftDeletes;
     protected $table = 'student';
     protected $primaryKey = 'id';
+    // 關閉自動時間戳
     public $timestamps=false;
+    // 添加時設置不准許添加的字段
+    // 使用了 $fillable 屬性，則只有在 $fillable 屬性中列出的屬性可以被批量賦值；
+    // 如果使用了 $guarded 屬性，則只有 $guarded 屬性中未列出的屬性可以被批量賦值。
+    protected $guarded=[];
+
+
     // -----------------------------------
     // public static function list($gets){
     //     $list=self::join('major as m','student.m_id','=','m.id')
@@ -26,7 +33,7 @@ class Student extends Model
     {
         $obj = self::from('student')
         ->join('major as m', 'student.m_id', '=', 'm.id')
-            ->select('m.major', 'student.id', 'student.headimg', 'student.name', 'student.sex', 'student.age','student.deleted_at');
+            ->select('m.major', 'student.id', 'student.birthday', 'student.name', 'student.sex', 'student.age','student.deleted_at');
         //   搜索判斷
         if (isset($gets['key']) and $gets['key'] != '') {
             $obj->where('student.name','like',"%{$gets['key']}%");
@@ -64,5 +71,18 @@ class Student extends Model
         return redirect('/list')->with('message', $arr['msg']);
     }
 
-   
+// 添加方法
+
+    public static function add($post){
+        try{
+            unset($post['_token']);
+            $post['birthday']=strtotime($post['birthday']);
+            self::create($post);
+            $arr=['error'=>0,'msg'=>'添加成功'];
+        }catch(Exception $e){
+            $arr=['error'=>1,'msg'=>'添加失敗','eMsg'=>$e->getMessage()];
+        
+        }
+        return $arr;
+    }
 }

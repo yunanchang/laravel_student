@@ -50,7 +50,7 @@
     <tr>
         <td>{{$v->id}}</td>
         <td>{{$v['name']}}</td>
-        <td>{{$v['headimg']}}</td>
+        <td>{{$v['birthday']}}</td>
         {{-- <td>{{date('Y-m-d',$v['headimg'])}}</td> --}}
         <td>{{$v['sex']}}</td>
         <td>{{$v['age']}}</td>
