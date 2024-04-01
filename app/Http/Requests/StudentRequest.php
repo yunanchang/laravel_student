@@ -26,7 +26,8 @@ class StudentRequest extends FormRequest
             'sex' => 'required',
             'age' => 'required|integer|between:1,150',
             'birthday' => 'required|date',
-            'm_id' => 'required|integer'
+            'm_id' => 'required|integer',
+            'logo'=>'file|image|max:200'
         ];
     }
 

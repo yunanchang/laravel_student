@@ -56,8 +56,10 @@ class Student extends Controller
     public function save(StudentRequest $request)
     {
         $post = $request->post();
+        $file=$request->file('logo');
+        // dd($file);
         dump($post);
-        $rt=StudentModel::add($post);
+        $rt=StudentModel::add($post,$file);
         dd($rt);
     }
 

@@ -33,7 +33,7 @@ class Student extends Model
     {
         $obj = self::from('student')
         ->join('major as m', 'student.m_id', '=', 'm.id')
-            ->select('m.major', 'student.id', 'student.birthday', 'student.name', 'student.sex', 'student.age','student.deleted_at');
+            ->select('m.major', 'student.id', 'student.birthday', 'student.name', 'student.sex', 'student.age','student.deleted_at','student.headimg');
         //   搜索判斷
         if (isset($gets['key']) and $gets['key'] != '') {
             $obj->where('student.name','like',"%{$gets['key']}%");
@@ -51,7 +51,7 @@ class Student extends Model
     }
     // 獲取器
 
-    public function getheadimgAttribute($value)
+    public function getbirthdayAttribute($value)
     {
         return  $value ? date('Y-m-d', $value) : '';
     }
@@ -73,10 +73,18 @@ class Student extends Model
 
 // 添加方法
 
-    public static function add($post){
+    public static function add($post,$file){
         try{
             unset($post['_token']);
+            if(!$file){
+                return ['error'=>2,'msg'=>'請上船頭像'];
+            }
+
+
             $post['birthday']=strtotime($post['birthday']);
+            $path=$file->store('photo','ding');
+            // dd($path);
+            $post['headimg']=$path;
             self::create($post);
             $arr=['error'=>0,'msg'=>'添加成功'];
         }catch(Exception $e){

@@ -8,9 +8,20 @@
 </head>
 <body>
     <h1>學生添加</h1>
-    <form action="./save" method="post">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+    <form action="./save" method="post" enctype="multipart/form-data">
         @csrf
         姓名:<input type="text" name="name" id=""><br>
+        頭像:<input type="file" name='logo'><br>
         性別:
         <input type="radio" name="sex" value="男">男
         <input type="radio" name="sex" value="女">女

@@ -42,6 +42,7 @@
         <th>年齡</th>
         <th>專業</th>
         <th>del_at</th>
+        <th>photo</th>
         <th>操作</th>
     </tr>
     @forelse ($list as $v)
@@ -56,6 +57,10 @@
         <td>{{$v['age']}}</td>
         <td>{{$v['major']}}</td>
         <td>{{$v['deleted_at']}}</td>
+        <td>
+            <img src="./uploads/{{$v['headimg']}}" alt="" width="100" height="50">
+       
+        </td>
         <td>
             <a href="./del/{{$v['id']}}">刪除</a>
             <a href="./add">修改</a>
