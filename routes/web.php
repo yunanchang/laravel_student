@@ -32,3 +32,8 @@ Route::get('del/{id}', [Student::class, 'del']);
 Route::get('add',[Student::class,'add']);
 // 添加處理
 Route::post('save',[Student::class,'save']);
+
+Route::view('login', 'login/index');
+// 登錄處理路由
+use App\Http\Controllers\Login;
+Route::post('lact',[Login::class,'lact']);
